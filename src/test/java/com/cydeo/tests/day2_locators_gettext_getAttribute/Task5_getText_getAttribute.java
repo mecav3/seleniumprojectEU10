@@ -22,6 +22,5 @@ public class Task5_getText_getAttribute {
         String expectedPlaceHolder = "first name";
 
         System.out.println("verify placeholder : "+expectedPlaceHolder.equals(actualPlaceHolder));
-
     }
 }

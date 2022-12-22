@@ -12,11 +12,11 @@ public class PracticeYahoo {
         driver.get("https://www.yahoo.com");
 
         String expectedTitle = "Yahoo | Mail, Weather, Search, Politics, News, Finance, Sports & Videos";
+        String actualTitle = driver.getTitle();
 
-        System.out.println(expectedTitle.equals(driver.getTitle()));
+        System.out.println("expected vs actual :" + expectedTitle.equals(actualTitle));
 
         driver.close();
-
 
     }
 }

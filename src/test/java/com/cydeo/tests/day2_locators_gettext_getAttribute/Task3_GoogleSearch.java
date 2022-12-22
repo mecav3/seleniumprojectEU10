@@ -22,6 +22,5 @@ public class Task3_GoogleSearch {
 
         System.out.println("verify title startswith apple : " + actualTitle.startsWith(expectedInTitle));
 
-
     }
 }

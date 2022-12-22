@@ -14,15 +14,18 @@ public class Task2_LinkText {
         WebDriver driver = new ChromeDriver();
         driver.get("https://practice.cydeo.com");
 
-        WebElement abTestlink = driver.findElement(By.linkText("A/B Testing"));
+        WebElement abTestlink = driver.findElement( By.linkText("A/B Testing") );
+
         abTestlink.click();
 
         String expectedTitle = "No A/B Test";
+
         String actualTitle = driver.getTitle();
 
         System.out.println("title verification : " + expectedTitle.equals(actualTitle) +" ." + actualTitle);
 
         driver.navigate().back();
+
         System.out.println("title verification : " + "Practice".equals(driver.getTitle()) + " ."+driver.getTitle());
 
     }

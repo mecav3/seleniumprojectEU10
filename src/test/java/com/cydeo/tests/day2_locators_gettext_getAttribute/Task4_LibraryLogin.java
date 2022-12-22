@@ -14,9 +14,10 @@ public class Task4_LibraryLogin {
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
         driver.get("https://library2.cybertekschool.com/login.html");
+
 // Negative testing
-        String email = "incorrect@email.com";
-        String password = "incorrect_pass";
+        String email = "incornnrect@email.com";
+        String password = "incobbnrrect_pass";
 
         WebElement userNameInput = driver.findElement(By.className("form-control"));
         userNameInput.sendKeys(email);
@@ -26,7 +27,5 @@ public class Task4_LibraryLogin {
 
         WebElement signInButton = driver.findElement(By.tagName("button"));
         signInButton.click();
-
-
     }
 }
