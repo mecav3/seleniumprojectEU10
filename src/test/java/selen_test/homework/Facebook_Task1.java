@@ -1,4 +1,6 @@
-package com.cydeo.tests.homework;
+package selen_test.homework;
+
+import selen_test.SelenUtil;
 
 public class Facebook_Task1 {
     public static void main(String[] args) {

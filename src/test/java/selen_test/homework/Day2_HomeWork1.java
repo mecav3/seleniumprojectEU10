@@ -1,4 +1,4 @@
-package com.cydeo.tests.homework;
+package selen_test.homework;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;

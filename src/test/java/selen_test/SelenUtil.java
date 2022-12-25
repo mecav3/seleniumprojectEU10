@@ -1,14 +1,15 @@
-package com.cydeo.tests.homework;
+package selen_test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.time.Duration;
+
 public class SelenUtil {
 
     public static WebDriver getdrv(String url) {
-
         WebDriverManager.chromedriver().setup();
 
         ChromeOptions options = new ChromeOptions();
@@ -18,11 +19,10 @@ public class SelenUtil {
 
         driver.get(url);
 
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
         return driver;
     }
-
-
-
 
 
 }
