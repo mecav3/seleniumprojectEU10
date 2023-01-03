@@ -18,7 +18,7 @@ public class Task5_getText_getAttribute {
         System.out.println("verify header text : "+expectedHeaderText.equals(actualHeaderText));
 
         WebElement firstNameInput = driver.findElement(By.name("firstname"));
-        String actualPlaceHolder =   firstNameInput.getAttribute("placeholder");
+        String actualPlaceHolder =   firstNameInput.getAttribute("name");
         String expectedPlaceHolder = "first name";
 
         System.out.println("verify placeholder : "+expectedPlaceHolder.equals(actualPlaceHolder));

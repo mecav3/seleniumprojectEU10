@@ -16,11 +16,9 @@ public class T4_findElements {
             System.out.println(link.getText());
             System.out.println(link.getAttribute("href"));
         }
-
-        }
-
-
     }
+
+}
 
 /**
  * TC #4: FindElements Task

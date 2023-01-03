@@ -9,23 +9,26 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class Task1_Locators {
     public static void main(String[] args) {
         WebDriverManager.chromedriver().setup();
-        WebDriver drv = new ChromeDriver();
+        WebDriver driver = new ChromeDriver();
 
-        drv.get("https://login1.nextbasecrm.com/");
-        WebElement login = drv.findElement(By.className("login-inp"));
+        driver.get("https://login1.nextbasecrm.com/");
+        WebElement login = driver.findElement(By.className("login-inp"));
         login.sendKeys("incorrect");
 
-        WebElement userPassword = drv.findElement(By.name("USER_PASSWORD"));
+        WebElement userPassword = driver.findElement(By.name("USER_PASSWORD"));
         userPassword.sendKeys("incorrect");
 
-        WebElement element = drv.findElement(By.className("login-btn"));
+        WebElement element = driver.findElement(By.className("login-btn"));
         element.click();
 
-        WebElement actualerrortext = drv.findElement(By.className("errortext"));
+        WebElement actualerrortext = driver.findElement(By.className("errortext"));
+String actualtext = actualerrortext.getText();
 
         String expected = "Incorrect login or password";
 
-        System.out.println(expected.equals(actualerrortext.getText()));
+        System.out.println(
+                expected.equals(actualtext)
+        );
 
     }
 }

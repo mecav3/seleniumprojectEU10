@@ -15,8 +15,8 @@ public class T5_checkbox {
         System.out.println("checkbox isselected : " + chkbox1.isSelected());
         System.out.println("checkbox isselected : " + chkbox2.isSelected());
         Thread.sleep(1000);
-chkbox1.click();
-chkbox2.click();
+        chkbox1.click();
+        chkbox2.click();
 
     }
 

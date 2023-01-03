@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class Tas2_Gettext_attribute {
+public class Task2_Gettext_Attribute {
     public static void main(String[] args) {
         WebDriver drv = SelenUtil.getdrv("https://login1.nextbasecrm.com");
 
@@ -28,7 +28,9 @@ public class Tas2_Gettext_attribute {
 
         System.out.println(element1.getAttribute("href"));
 
-        System.out.println("isDisplayed : "+element1.isDisplayed() );
+        System.out.println("isDisplayed : "+
+                element1 . isDisplayed()
+        );
     }
 }
 /**

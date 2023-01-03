@@ -6,11 +6,14 @@ import org.openqa.selenium.WebDriver;
 
 public class Task4_cssSelector {
     public static void main(String[] args) {
-        WebDriver drv = SelenUtil.getdrv("https://login1.nextbasecrm.com/?forgot_password=yes");
-        System.out.println(
-        drv.findElement(By.cssSelector("button[class='login-btn']"))
-                .getText().equals("Reset password"));
 
+        WebDriver drv = SelenUtil.getdrv("https://login1.nextbasecrm.com/?forgot_password=yes");
+
+        System.out.println(
+                drv.findElement(
+                        By.cssSelector("button[class='login-btn']"))
+                        .getText()
+                        .equals("Reset password"));
 
     }
 }

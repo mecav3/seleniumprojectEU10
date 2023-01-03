@@ -10,12 +10,22 @@ public class Task3_getAttributeCssSelector {
 
         WebDriver drv = SelenUtil.getdrv("https://login1.nextbasecrm.com/");
 
-        WebElement element = drv.findElement(By.cssSelector("input[class='login-btn']"));
+        WebElement element = drv.findElement(
+                By.cssSelector(
+                        "input[class='login-btn']"
+                ));
 
         String expected = "Log In";
 
-        System.out.println(expected.equals(element.getAttribute("value")));
+        System.out.println(
+                expected.equals(
+                element.
+                        getAttribute("value")
+        ));
 
+    //  tagName[attribute='value']
+     //   tagName.classValue
+     //   tagName#idValue
 
     }
-    }
+}
