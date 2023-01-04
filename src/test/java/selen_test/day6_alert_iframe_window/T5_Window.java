@@ -3,6 +3,7 @@ package selen_test.day6_alert_iframe_window;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import selen_test.SelenUtil;
@@ -22,7 +23,7 @@ public class T5_Window {
         System.out.println("window handle : " +drv.getWindowHandle());
 
         drv.findElement(By.xpath("//a[.='Click Here']")).click();
-   /** clicken and open new window tab but seleneniun doesnt switch to new window*/
+   /** clicked and open new window tab but seleneniun doesnt switch to new window*/
 
         Assert.assertEquals(drv.getTitle(), "Windows");
 
@@ -33,7 +34,14 @@ public class T5_Window {
 
         Assert.assertEquals(drv.getTitle(), "New Window");
 
+    }
 
+    @AfterMethod
+    public void tearDown() throws InterruptedException {
+        Thread.sleep(1200);
+        drv.close(); // close active window tab
+        Thread.sleep(1200);
+        drv.quit(); // close session so all windows closed
     }
 }
 /**
