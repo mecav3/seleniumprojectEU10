@@ -25,7 +25,7 @@ public class TestNG_Intro {
         System.out.println("------> After method is running");
     }
 
-    @Test //(priority = 1)
+    @Test //(priority = 1, dependency="test2")
     public void zest1() {
         System.out.println("Test 1 is running");
         Assert.assertEquals("apple", "apple");
