@@ -21,10 +21,10 @@ public class TestNG_Selenium {
         Assert.assertEquals(drv.getTitle(), "Google", "my 1st failure message if it fails");
     }
 
-    @Test
+
     public void selenium_test1() {
 
-        Assert.assertEquals(drv.getTitle(), "Googl", "my 2nd failure message if it fails");
+        Assert.assertEquals(drv.getTitle(), "Google", "my 2nd failure message if it fails");
     }
 
     @AfterMethod

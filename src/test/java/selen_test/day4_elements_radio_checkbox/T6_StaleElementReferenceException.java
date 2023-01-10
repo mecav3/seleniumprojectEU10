@@ -15,7 +15,7 @@ public class T6_StaleElementReferenceException {
 
         /** need to reassign driver, because onrefresh reference to drv is lost*/
 
-        element = drv.findElement(By.xpath("//a[.='CYDEO']"));
+    //    element = drv.findElement(By.xpath("//a[.='CYDEO']"));
         System.out.println(element.isDisplayed());
 
     }
