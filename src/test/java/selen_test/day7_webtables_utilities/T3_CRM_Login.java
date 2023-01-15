@@ -1,22 +1,14 @@
 package selen_test.day7_webtables_utilities;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import selen_test.BrowserUtils;
 import selen_test.CRMUtils;
-import selen_test.SelenUtil;
+import selen_test.base.TestBase;
 
-public class T3_CRM_Login {
-    private WebDriver drv;
+public class T3_CRM_Login extends TestBase {
 
-    @BeforeClass
-    public void setUp() {
-        drv = SelenUtil.getdrv("http://login1.nextbasecrm.com/");
-    }
-
-
+    @Test
     public void crmLogin() {
         drv.findElement(By.xpath("//input[@name=\"USER_LOGIN\"]"))
                 .sendKeys("helpdesk1@cybertekschool.com");
@@ -37,10 +29,11 @@ public class T3_CRM_Login {
 
         BrowserUtils.verifyTitle(drv, "(1) My tasks");
     }
-@Test
+
+    @Test
     public void crmLogin3() {
 
-        CRMUtils.crmLogin(drv,"helpdesk1@cybertekschool.com", "UserUser");
+        CRMUtils.crmLogin(drv, "helpdesk1@cybertekschool.com", "UserUser");
 
         BrowserUtils.verifyTitle(drv, "(1) My tasks");
     }
