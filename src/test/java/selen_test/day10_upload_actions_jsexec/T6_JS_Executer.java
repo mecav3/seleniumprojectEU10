@@ -2,16 +2,25 @@ package selen_test.day10_upload_actions_jsexec;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.Test;
+import selen_test.BrowserUtils;
 import selen_test.Driver;
 
 public class T6_JS_Executer {
     @Test
     public void testName() {
-        Driver.getDriver().get("https://practice.cydeo.com/infinite_scroll");
+        Driver.getDriver().get("https://www.softwaretestinghelp.com");
 
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
 
+        BrowserUtils.sleep(1);
         js.executeScript("window.scrollBy(0,500)");
+
+        BrowserUtils.sleep(1);
+        js.executeScript("window.scrollBy(0,500)");
+
+        BrowserUtils.sleep(1);
+        js.executeScript("window.scrollBy(0,-500)");
+
     }
 }
 
