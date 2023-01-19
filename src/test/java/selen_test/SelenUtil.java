@@ -13,7 +13,6 @@ public class SelenUtil {
         WebDriver webDriver = getdrv();
         webDriver.get(url);
         return webDriver;
-
     }
 
     public static WebDriver getdrv() {
@@ -24,7 +23,7 @@ public class SelenUtil {
 
         WebDriver driver = new ChromeDriver(options);
 
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
         return driver;
     }
