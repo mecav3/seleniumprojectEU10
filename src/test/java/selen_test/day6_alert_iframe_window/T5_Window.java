@@ -23,7 +23,7 @@ public class T5_Window {
         System.out.println("window handle : " +drv.getWindowHandle());
 
         drv.findElement(By.xpath("//a[.='Click Here']")).click();
-   /** clicked and open new window tab but seleneniun doesnt switch to new window*/
+   /** clicked and open new window tab but seleneniun doesn't switch to new window*/
 
         Assert.assertEquals(drv.getTitle(), "Windows");
 

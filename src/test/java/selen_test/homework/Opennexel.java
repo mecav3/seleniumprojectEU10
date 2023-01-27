@@ -3,6 +3,7 @@ package selen_test.homework;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
+import selen_test.ToBeExtend;
 
 import java.util.List;
 

@@ -5,7 +5,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 import selen_test.Driver;
-import selen_test.homework.ToBeExtend;
+import selen_test.ToBeExtend;
 
 public class ActionsPractice extends ToBeExtend {
 

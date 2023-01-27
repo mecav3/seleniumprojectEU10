@@ -1,17 +1,19 @@
 package selen_test.homework;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
+import selen_test.ToBeExtend;
 
 public class Alodokter extends ToBeExtend {
 
     public void testName1() {
 
         //     wd.get("https://www.alodokter.com/");
-//        String str = "return document.querySelector(\"#content>hero-view\").shadowRoot.querySelector(\"#searchSpecialities\").value='Dokter nemo'";
-//        ((JavascriptExecutor) wd).executeScript(str);
+       String str = "return document.querySelector(\"#content>hero-view\").shadowRoot.querySelector(\"#searchSpecialities\").value='Dokter nemo'";
+        ((JavascriptExecutor) wd).executeScript(str);
 
 //        js.executeScript("Array.from(document.querySelector(\"#content>hero-view\").shadowRoot.querySelectorAll(\"strong\")).find(el => el.textContent === 'Dokter Kandungan').click();");
 
@@ -30,8 +32,11 @@ public class Alodokter extends ToBeExtend {
     @Test
     public void testName() {
         wd.get("https://www.alodokter.com/");
+
         WebElement shadowHost = wd.findElement(By.xpath("//*[@id=\"content\"]/hero-view"));
+
         SearchContext a = shadowHost.getShadowRoot();
+
         a.findElement(By.id("searchSpecialities")).sendKeys("Dokter nemoo");
     }
 

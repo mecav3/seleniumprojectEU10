@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import selen_test.homework.ToBeExtend;
+import selen_test.ToBeExtend;
 
 public class T1_DragDrop extends ToBeExtend {
     // @Test

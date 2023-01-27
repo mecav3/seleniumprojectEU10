@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 import selen_test.BrowserUtils;
-import selen_test.homework.ToBeExtend;
+import selen_test.ToBeExtend;
 
 public class T7_JsExec extends ToBeExtend {
     @Test

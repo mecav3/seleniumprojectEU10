@@ -3,6 +3,7 @@ package selen_test.homework;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import selen_test.ToBeExtend;
 
 public class GasMileage extends ToBeExtend {
     @Test

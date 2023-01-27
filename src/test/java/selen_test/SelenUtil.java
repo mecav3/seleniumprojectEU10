@@ -1,6 +1,7 @@
 package selen_test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -8,6 +9,14 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import java.time.Duration;
 
 public class SelenUtil {
+
+    public static void newWindow(WebDriver wd, String url) {
+        ((JavascriptExecutor) wd).executeScript(
+                "window.open(" +
+                        "'" + url + "'" +
+                        ",'_blank');"
+        );
+    }
 
     public static WebDriver getdrv(String url) {
         WebDriver webDriver = getdrv();

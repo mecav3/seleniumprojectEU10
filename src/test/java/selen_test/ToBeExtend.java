@@ -1,4 +1,4 @@
-package selen_test.homework;
+package selen_test;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
