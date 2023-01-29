@@ -1,12 +1,20 @@
 package selen_test;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 
 public class ToBeExtend {
+
     protected WebDriver wd;
 
-    @BeforeClass
+    public static void pl(String s) {
+        System.out.println(s);
+    }
+    public static void pl(boolean b) {
+        System.out.println(b);
+    }
+
+    @BeforeTest
     public void setUp() {
         wd = SelenUtil.getdrv();
     }

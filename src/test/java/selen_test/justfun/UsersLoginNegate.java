@@ -1,20 +1,9 @@
 package selen_test.justfun;
 
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class UsersLoginNegate extends Tezt {
-    @Override
-    @BeforeClass
-    public void beforeClass() {
-        wd.get(url);
-    }
-
-    protected String fakeit(String str) {
-        char c = str.charAt(0);
-        return str.replace(c, ++c);
-    }
+public class UsersLoginNegate extends Account {
 
     @Test
     public void test_username() {
@@ -23,11 +12,11 @@ public class UsersLoginNegate extends Tezt {
         while (i++ < 1) {
             System.out.println(
                     fakeit(users.get(0))
-                            +    "-" + i);
+                            + "-" + i);
             login(
                     fakeit(users.get(0))
             );
-             System.out.println("loginIsFail() = " + loginIsFail());
+            pl("loginIsFail() = " + loginIsFail());
             Assert.assertTrue(loginIsFail());
         }
     }
@@ -39,13 +28,12 @@ public class UsersLoginNegate extends Tezt {
         while (i++ < 1) {
             System.out.println(users.get(0) + " : " +
                     fakeit(pass)
-                    +  "-" + i);
-            login(users.get(0), fakeit(pass)) ;
-            System.out.println("loginIsFail() = " + loginIsFail());
+                    + "-" + i);
+            login(users.get(0), fakeit(pass));
+            pl("loginIsFail() = " + loginIsFail());
             Assert.assertTrue(loginIsFail());
         }
     }
-
 
 
 }
