@@ -1,11 +1,8 @@
 package selen_test.justfun;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.Test;
 import selen_test.SelenUtil;
 import selen_test.ToBeExtend;
 
@@ -24,43 +21,6 @@ public class Tezt extends ToBeExtend {
         //wd.get(url);
     }
 
-    @Test
-    public void test1() {
-        int i = 0;
-        wd.get(url);
-        while (i++ < 30) {
-            System.out.println(users.get(0) + "-" + i);
-            login(wd, users.get(0));
-            logout(wd);
-        }
-    }
-
-     @Test
-    public void test3() {
-        int i = 0;
-        WebDriver wd2 = new ChromeDriver();
-        wd2.manage().window().setPosition(new Point(200, 200));
-        wd2.get(url);
-        while (i++ < 30) {
-            System.out.println(users.get(2) + "-" + i);
-            login(wd2, users.get(2));
-            logout(wd2);
-        }
-    }
-
-    @Test
-    public void test2() {
-        int i = 0;
-        WebDriver wd1 = new ChromeDriver();
-        wd1.manage().window().setPosition(new Point(100, 100));
-        wd1.get(url);
-
-        while (i++ < 30) {
-            System.out.println(users.get(1) + "-" + i);
-            login(wd1, users.get(1));
-            logout(wd1);
-        }
-    }
 
     //  @Test
     public void test_login() {
@@ -96,33 +56,33 @@ public class Tezt extends ToBeExtend {
         }
     }
 
-    private void logout() {
+    protected void logout() {
         wd.findElement(By.xpath("(//img)[2]")).click();
         wd.findElement(By.xpath("//a[.='Logout']")).click();
     }
 
-    private void logout(WebDriver wd) {
+    protected void logout(WebDriver wd) {
         wd.findElement(By.xpath("(//img)[2]")).click();
         wd.findElement(By.xpath("//a[.='Logout']")).click();
     }
 
-    private void login(String usr, String pass) {
+    protected void login(String usr, String pass) {
         wd.findElement(By.id("username")).sendKeys(usr);
         wd.findElement(By.id("password")).sendKeys(pass);
         wd.findElement(By.id("login-submit")).click();
     }
 
-    private void login(String usr) {
+    protected void login(String usr) {
         login(usr, "Abc1");
     }
 
-    private void login(WebDriver wd, String usr) {
+    protected void login(WebDriver wd, String usr) {
         wd.findElement(By.id("username")).sendKeys(usr);
         wd.findElement(By.id("password")).sendKeys(pass);
         wd.findElement(By.id("login-submit")).click();
     }
 
-    public boolean loginIssucces() {
+    protected boolean loginIsFail() {
         WebElement a = wd.findElement(By.xpath("//div[.=' Invalid username or password.']"));
         return a.isDisplayed();
     }
