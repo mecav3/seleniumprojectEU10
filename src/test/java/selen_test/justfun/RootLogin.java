@@ -10,16 +10,19 @@ public class RootLogin extends Account {
     public void test1_login() {
         login(users.get(0)); // TODO dependency here for root
         Assert.assertTrue(loginIsSucces());
+        pl("my summary :");
+        pl("logged in to "+users.get(0));
     }
 
     @Test
     public void test2_logout() {
         logout();
         Assert.assertTrue(logoutIsSucces());
+        pl("logged out from " + users.get(0));
     }
 
     @AfterClass
     public void tearDown() {
-        wd.close();
+        wd.quit();
     }
 }

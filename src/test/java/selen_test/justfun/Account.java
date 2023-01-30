@@ -51,10 +51,10 @@ public class Account extends ToBeExtend {
     }
 
     protected boolean loginIsSucces() {
-      return wd.findElement(By.xpath("(//img)[2]")).isDisplayed();
+        return wd.findElement(By.xpath("(//img)[2]")).isDisplayed();
     }
 
-    protected boolean logoutIsSucces(){
+    protected boolean logoutIsSucces() {
         return wd.getCurrentUrl().contains("login");
     }
 
