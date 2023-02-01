@@ -33,4 +33,8 @@ public class ToBeExtend {
     public void hooold(){
         SelenUtil.sleep(2.5);
     }
+
+    public void clearBrowserCache() {
+        wd.manage().deleteAllCookies();
+    }
 }
