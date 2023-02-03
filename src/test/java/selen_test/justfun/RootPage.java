@@ -6,11 +6,12 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class RootPage extends Account {
+    Map<String, String> companies, admins;
 
     @Test
     public void test0_login() {
@@ -25,11 +26,10 @@ public class RootPage extends Account {
         List<WebElement> comp = wd.findElements(By.xpath("//tbody/tr/td[2]"));
         List<WebElement> stat = wd.findElements(By.xpath("//tbody/tr/td[7]"));
 
-        Map<String, String> list = new HashMap<>();
+        companies = new TreeMap<>();
         for (int i = 0; i < comp.size(); i++) {
-            list.put(  comp.get(i).getText(), stat.get(i).getText() );
+            companies.put(comp.get(i).getText(), stat.get(i).getText());
         }
-        System.out.println("list = " + list);
     }
 
     @Test
@@ -41,14 +41,29 @@ public class RootPage extends Account {
 
     @Test
     public void test3_get_user_list() {
-        List<WebElement> list = wd.findElements(By.xpath("//tbody/tr/td[6]"));
+        List<WebElement> admin = wd.findElements(By.xpath("//tbody/tr/td[6]"));
+        List<WebElement> comp = wd.findElements(By.xpath("//tbody/tr/td[2]"));
 
-        list.forEach(s -> pl(s.getText()));
+        admins = new TreeMap<>();
+        for (int i = 0; i < admin.size(); i++) {
+            admins.put(admin.get(i).getText(), comp.get(i).getText());
+        }
+    }
+
+    //  @Test
+    public void test4_pivot_admin() {
+        admins.forEach((user, comp) -> pl(user + "\t" + comp + "\t" + companies.get(comp)));
+    }
+
+    @Test
+    public void test5_pivot_company() {
+
 
     }
 
+
     @AfterClass
     public void tearDown() {
-        //     wd.quit();
+              wd.close();
     }
 }
