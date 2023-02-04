@@ -33,8 +33,12 @@ public class SelenUtil {
     public static WebDriver getdrv() {
         WebDriverManager.chromedriver().setup();
 
+     //   System.setProperty("webdriver.chrome.args", "--disable-logging");
+     //   System.setProperty("webdriver.chrome.silentOutput", "true");
+
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--lang=en");
+   //      options.addArguments("--silent");
 
         WebDriver driver = new ChromeDriver(options);
 

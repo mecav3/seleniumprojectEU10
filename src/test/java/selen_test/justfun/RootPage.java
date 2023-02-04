@@ -119,6 +119,8 @@ public class RootPage extends Account {
 
     @AfterClass
     public void tearDown() {
+
+      //  Diagnostics.Process.GetProcessesByName("chromedriver").ToList().ForEach(px => px.Kill());
            wd.close();
     }
 }
