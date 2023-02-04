@@ -6,12 +6,15 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 public class RootPage extends Account {
     Map<String, String> companies, admins;
+    Map<String, List<String>> all;
 
     @Test
     public void test0_login() {
@@ -26,7 +29,7 @@ public class RootPage extends Account {
         List<WebElement> comp = wd.findElements(By.xpath("//tbody/tr/td[2]"));
         List<WebElement> stat = wd.findElements(By.xpath("//tbody/tr/td[7]"));
 
-        companies = new TreeMap<>();
+        companies = new HashMap<>();
         for (int i = 0; i < comp.size(); i++) {
             companies.put(comp.get(i).getText(), stat.get(i).getText());
         }
@@ -44,26 +47,78 @@ public class RootPage extends Account {
         List<WebElement> admin = wd.findElements(By.xpath("//tbody/tr/td[6]"));
         List<WebElement> comp = wd.findElements(By.xpath("//tbody/tr/td[2]"));
 
-        admins = new TreeMap<>();
+        admins = new HashMap<>();
         for (int i = 0; i < admin.size(); i++) {
             admins.put(admin.get(i).getText(), comp.get(i).getText());
         }
     }
 
-    //  @Test
+    @Test
     public void test4_pivot_admin() {
+        pl("\n---------Admin Status----------");
         admins.forEach((user, comp) -> pl(user + "\t" + comp + "\t" + companies.get(comp)));
+        System.out.println("Passive : " + admins.values().stream().filter(n -> companies.get(n).equalsIgnoreCase("passive")).count());
     }
 
     @Test
     public void test5_pivot_company() {
+        all = new HashMap<>();
+        for (Map.Entry<String, String> comp : companies.entrySet()) {
+            List<String> list = new ArrayList<>();
+            for (Map.Entry<String, String> adm : admins.entrySet()) {
+                if (adm.getValue().equalsIgnoreCase(comp.getKey())) {
+                    list.add(adm.getKey());
+                }
+                all.put(comp.getKey(), list);
+            }
+        }
+        pl("\n---------Companies with admin----------");
+        all.forEach((company, admin) -> {
+            if (admin.size() > 0) pl(company + " : " + admin);
+        });
 
+        pl("\n---------Companies with NO admin----------");
+        all.forEach((company, admin) -> {
+            if (admin.size() == 0) pl(company);
+        });
 
+        System.out.println(" count : " + all.values().stream().filter(n -> n.size() == 0).count());
     }
 
+    @Test
+    public void test6_admin_active_login() {
+        wd.get(url);
+        System.out.println("\n-----Testing Active Admins : ");
+
+        for (Map.Entry<String, String> entry :
+                admins.entrySet().stream().filter(n -> companies.get(n.getValue()).equalsIgnoreCase("active")).collect(Collectors.toList())
+        ) {
+            System.out.println(entry.getKey());
+
+            login(entry.getKey());
+            Assert.assertTrue(loginIsSucces());
+            logout();
+            Assert.assertTrue(logoutIsSucces());
+        }
+    }
+
+    @Test
+    public void test7_admin_passive_login() {
+        System.out.println("\n-----Testing Passive Admins : ");
+
+        for (Map.Entry<String, String> entry :
+                admins.entrySet().stream().filter(n -> companies.get(n.getValue()).equalsIgnoreCase("passive")).collect(Collectors.toList())
+        ) {
+            System.out.println(entry.getKey());
+
+            login(entry.getKey());
+            Assert.assertTrue(loginIsFail());
+
+        }
+    }
 
     @AfterClass
     public void tearDown() {
-              wd.close();
+           wd.close();
     }
 }
