@@ -1,6 +1,7 @@
 package selen_test;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
 public class ToBeExtend {
@@ -11,9 +12,11 @@ public class ToBeExtend {
         System.out.println(s);
 
     }
+
     public static void p(String s) {
         System.out.print(s);
     }
+
     public static void pl(boolean b) {
         System.out.println(b);
     }
@@ -23,19 +26,24 @@ public class ToBeExtend {
         wd = SelenUtil.getdrv();
     }
 
-    public void hold(){
+    public void hold() {
         SelenUtil.sleep(0.5);
     }
 
-    public void hoold(){
+    public void hoold() {
         SelenUtil.sleep(1.5);
     }
 
-    public void hooold(){
+    public void hooold() {
         SelenUtil.sleep(2.5);
     }
 
     public void clearBrowserCache() {
         wd.manage().deleteAllCookies();
+    }
+
+    @AfterTest
+    public void tearDown() {
+        SelenUtil.kill_driver_process();
     }
 }

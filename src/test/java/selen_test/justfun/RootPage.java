@@ -2,6 +2,7 @@ package selen_test.justfun;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
@@ -25,7 +26,7 @@ public class RootPage extends Account {
     @Test
     public void test1_get_company() {
         Assert.assertEquals(wd.findElement(By.xpath("//h3")).getText(), "Company List");
-
+        new Select(wd.findElement(By.tagName("select"))).selectByValue("100");
         List<WebElement> comp = wd.findElements(By.xpath("//tbody/tr/td[2]"));
         List<WebElement> stat = wd.findElements(By.xpath("//tbody/tr/td[7]"));
 
@@ -44,6 +45,7 @@ public class RootPage extends Account {
 
     @Test
     public void test3_get_user_list() {
+        new Select(wd.findElement(By.tagName("select"))).selectByValue("100");
         List<WebElement> admin = wd.findElements(By.xpath("//tbody/tr/td[6]"));
         List<WebElement> comp = wd.findElements(By.xpath("//tbody/tr/td[2]"));
 
@@ -96,7 +98,7 @@ public class RootPage extends Account {
             System.out.println(entry.getKey());
 
             login(entry.getKey());
-            Assert.assertTrue(loginIsSucces());
+            Assert.assertTrue(loginIsSucces()); // TODO gettitle bööle olmaz şifre yok çakıyo
             logout();
             Assert.assertTrue(logoutIsSucces());
         }
@@ -113,14 +115,12 @@ public class RootPage extends Account {
 
             login(entry.getKey());
             Assert.assertTrue(loginIsFail());
-
         }
     }
 
     @AfterClass
     public void tearDown() {
-
-      //  Diagnostics.Process.GetProcessesByName("chromedriver").ToList().ForEach(px => px.Kill());
-           wd.close();
+        // wd.quit();
+        //   SelenUtil.kill_driver_process();
     }
 }

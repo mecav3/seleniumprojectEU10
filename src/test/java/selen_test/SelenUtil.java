@@ -7,9 +7,18 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.io.IOException;
 import java.time.Duration;
 
 public class SelenUtil {
+
+    public static void kill_driver_process() {
+        try {
+            Runtime.getRuntime().exec("taskkill /F /IM ChromeDriver.exe");
+        } catch (IOException e) {
+            System.out.println("--kill error " + e.getMessage());
+        }
+    }
 
     public static void newWindow(WebDriver wd, String url, int repeat) {
         for (int i = 0; i < repeat; i++)
@@ -33,12 +42,8 @@ public class SelenUtil {
     public static WebDriver getdrv() {
         WebDriverManager.chromedriver().setup();
 
-     //   System.setProperty("webdriver.chrome.args", "--disable-logging");
-     //   System.setProperty("webdriver.chrome.silentOutput", "true");
-
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--lang=en");
-   //      options.addArguments("--silent");
 
         WebDriver driver = new ChromeDriver(options);
 
@@ -59,4 +64,23 @@ public class SelenUtil {
         ((JavascriptExecutor) wd).executeScript(js, we);
     }
 
+    public static void scroll_to(WebDriver drv, int yy) {
+        ((JavascriptExecutor) drv)
+                .executeScript("window.scrollBy(0," + yy + ")");
+    }
+
+    public static void scroll_into(WebDriver drv, WebElement we) {
+        ((JavascriptExecutor) drv)
+                .executeScript("arguments[0].scrollIntoView(true)", we);
+    }
+
+    public static void scroll_to_end(WebDriver drv) {
+        ((JavascriptExecutor) drv)
+                .executeScript("window.scrollTo(0, document.body.scrollHeight)");
+    }
+
+    public static void click(WebDriver drv, WebElement we) {
+        ((JavascriptExecutor) drv)
+                .executeScript("arguments[0].click()", we);
+    }
 }

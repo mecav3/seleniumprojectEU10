@@ -4,7 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
-public class RootLogin extends Account {
+public class RootLoginOut extends Account {
 
     @Test
     public void test1_login() {
