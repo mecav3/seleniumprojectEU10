@@ -12,6 +12,7 @@ import java.util.List;
 public class Account extends ToBeExtend {
     String url = "http://3.94.57.183:8001/";
     String pass = "Abc1";
+
     List<String> users = new ArrayList<>(Arrays.asList(
             "root@cydeo.com", "admin@bluetech.com", "manager@bluetech.com"));
 

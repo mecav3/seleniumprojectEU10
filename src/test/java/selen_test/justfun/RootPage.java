@@ -81,7 +81,9 @@ public class RootPage extends Account {
 
         pl("\n---------Companies with NO admin----------");
         all.forEach((company, admin) -> {
-            if (admin.size() == 0) pl(company);
+            if (admin.size() == 0) {
+                pl(company);
+            }
         });
 
         System.out.println(" count : " + all.values().stream().filter(n -> n.size() == 0).count());
