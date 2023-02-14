@@ -6,6 +6,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
+import selen_test.JS;
 import selen_test.SelenUtil;
 
 import java.util.List;
@@ -34,7 +35,7 @@ public class RootCreateAdmin extends Account {
         int i = 0;
         while (i++ < 1) {
 
-            SelenUtil.click(wd, wd.findElement(By.id("userCreateLink")));
+            JS.click(wd, wd.findElement(By.id("userCreateLink")));
             Assert.assertEquals(wd.findElement(By.tagName("h3")).getText(), "Create New User");
 
             List<WebElement> els = wd.findElements(By.tagName("input"));

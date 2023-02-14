@@ -6,7 +6,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
-import selen_test.SelenUtil;
+import selen_test.JS;
 
 import java.util.List;
 import java.util.Random;
@@ -26,7 +26,7 @@ public class RootCreateCompany extends Account {
 
         int i = 0;
         while (i++ < 1) {
-            SelenUtil.click(wd, wd.findElement(By.id("companyCreateLink")));
+            JS.click(wd, wd.findElement(By.id("companyCreateLink")));
 
             Assert.assertEquals(wd.findElement(By.tagName("h3")).getText(), "Create New Company");
 
@@ -43,7 +43,7 @@ public class RootCreateCompany extends Account {
             els.get(7).sendKeys("state1");
             new Select(wd.findElement(By.id("country"))).selectByIndex(9);
 
-            SelenUtil.click(wd, wd.findElement(By.cssSelector("button.btn.btn-success.mb-2.mb-sm-0.mr-sm-2")));
+            JS.click(wd, wd.findElement(By.cssSelector("button.btn.btn-success.mb-2.mb-sm-0.mr-sm-2")));
             pl("adding company "+i);
 //            try {
 //                if (wd.findElement(By.xpath("//li[@class='validation']")).getText().equals("This title already exists.")) {

@@ -3,7 +3,6 @@ package selen_test;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
@@ -59,28 +58,5 @@ public class SelenUtil {
         }
     }
 
-    public static void js_inject(WebDriver wd, WebElement we, String text) {
-        String js = "arguments[0].setAttribute('value','" + text + "')";
-        ((JavascriptExecutor) wd).executeScript(js, we);
-    }
 
-    public static void scroll_to(WebDriver drv, int yy) {
-        ((JavascriptExecutor) drv)
-                .executeScript("window.scrollBy(0," + yy + ")");
-    }
-
-    public static void scroll_into(WebDriver drv, WebElement we) {
-        ((JavascriptExecutor) drv)
-                .executeScript("arguments[0].scrollIntoView(true)", we);
-    }
-
-    public static void scroll_to_end(WebDriver drv) {
-        ((JavascriptExecutor) drv)
-                .executeScript("window.scrollTo(0, document.body.scrollHeight)");
-    }
-
-    public static void click(WebDriver drv, WebElement we) {
-        ((JavascriptExecutor) drv)
-                .executeScript("arguments[0].click()", we);
-    }
 }
