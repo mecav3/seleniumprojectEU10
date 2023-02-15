@@ -1,6 +1,8 @@
 package selen_test;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
 public class ToBeExtend {
@@ -9,8 +11,8 @@ public class ToBeExtend {
     protected String report = "";
 
     public void pl(String s) {
-        System.out.println( s);
-        report +=  s;
+        System.out.println(s);
+        report += s + "<br>";
     }
 
     public void p(String s) {
@@ -42,4 +44,8 @@ public class ToBeExtend {
         wd.manage().deleteAllCookies();
     }
 
+    @AfterTest
+    public void afterClass() {
+        JS.writee(new ChromeDriver(), report);
+    }
 }

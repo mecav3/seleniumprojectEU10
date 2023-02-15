@@ -4,11 +4,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 import selen_test.JS;
 
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 public class ManagerCreateProduct extends RootBase {
@@ -46,7 +47,7 @@ public class ManagerCreateProduct extends RootBase {
         JS.click(wd, wd.findElement(By.id("companyCreateLink")));
         Assert.assertEquals(wd.findElement(By.tagName("h3")).getText(), "Create New Product");
 
-        pl("\n-----Creating product :");
+        pl("\n-----Creating product :"); // TODO check if exist
         product = "myProduct_" + (new Random().nextInt(999) + 1);
         wd.findElement(By.id("name")).sendKeys(product);
         wd.findElement(By.id("lowLimitAlert")).sendKeys("3");
@@ -60,9 +61,4 @@ public class ManagerCreateProduct extends RootBase {
         Assert.assertTrue(wes.stream().anyMatch(p -> p.getText().equals(product)));
     }
 
-    @AfterClass
-    public void tearDown() {
-        // wd.quit();
-        //   SelenUtil.kill_driver_process();
-    }
 }

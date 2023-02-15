@@ -3,11 +3,10 @@ package selen_test.justfun;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 import selen_test.JS;
 
-public class ManagerCreateAproveInvoice extends ManagerCreateProduct {
+public class ManagerCreateAprovePinvoice extends ManagerCreateProduct {
 
     @Test
     public void test09_goto_purchase_invoice() {
@@ -31,7 +30,7 @@ public class ManagerCreateAproveInvoice extends ManagerCreateProduct {
         wd.findElement(By.id("tax")).sendKeys("7");
         wd.findElement(By.xpath("//button[@value='addItem']")).click();
         invoice = wd.findElement(By.id("invoiceNo")).getAttribute("value");
-        p(invoice);
+        pl(invoice);
     }
 
     @Test
@@ -40,13 +39,10 @@ public class ManagerCreateAproveInvoice extends ManagerCreateProduct {
         Assert.assertEquals(wd.findElement(By.tagName("h2")).getText(), "Purchase Invoice List");
         new Select(wd.findElement(By.tagName("select"))).selectByValue("100");
         pl(" approving..");
-        wd.findElement(By.xpath("//td[.='" + invoice + "']/following-sibling::td[6]//button[.='Approve']")).click();
+        JS.click(wd,
+                wd.findElement(By.xpath("//td[.='" + invoice + "']/following-sibling::td[6]//button[.='Approve']"))
+        );
+        new Select(wd.findElement(By.tagName("select"))).selectByValue("100");
     }
 
-    @AfterClass
-    public void tearDown() {
-        JS.alertt(wd, product + " : " + invoice);
-        // wd.quit();
-        //   SelenUtil.kill_driver_process();
-    }
 }

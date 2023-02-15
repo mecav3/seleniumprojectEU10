@@ -5,6 +5,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class JS {
+
+    public static void runn(WebDriver drv,String sript) {
+        ((JavascriptExecutor) drv).executeScript(sript);
+    }
+
     public static void count_links(WebDriver drv) {
         ((JavascriptExecutor) drv).executeScript("alert('links '+document.links.length)");
     }
@@ -20,7 +25,9 @@ public class JS {
     public static void confirmm(WebDriver drv, String text) {
         ((JavascriptExecutor) drv).executeScript("confirm('" + text + "')");
     }
+
     public static void writee(WebDriver drv, String text) {
+        text = text.replaceAll("\n", "<br>");
         ((JavascriptExecutor) drv).executeScript("document.writeln('" + text + "')");
     }
 
