@@ -7,18 +7,16 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 import selen_test.JS;
-import selen_test.SelenUtil;
 
 import java.util.List;
 import java.util.Random;
 
-public class RootCreateAdmin extends Account {
+public class RootCreateAdmin extends AccountBase {
 
     @Test
     public void test1_login() {
         login(users.get(0)); // TODO dependency here for root
         Assert.assertTrue(loginIsSucces());
-        pl("my summary :");
         pl("logged in to " + users.get(0));
     }
 
@@ -60,6 +58,6 @@ public class RootCreateAdmin extends Account {
     @AfterClass
     public void tearDown() {
        wd.quit();
-         SelenUtil.kill_driver_process();
+       //  SelenUtil.kill_driver_process();
     }
 }

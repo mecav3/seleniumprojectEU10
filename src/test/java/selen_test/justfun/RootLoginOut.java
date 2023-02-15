@@ -4,13 +4,12 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
-public class RootLoginOut extends Account {
+public class RootLoginOut extends AccountBase {
 
     @Test
     public void test1_login() {
         login(users.get(0)); // TODO dependency here for root
         Assert.assertTrue(loginIsSucces());
-        pl("my summary :");
         pl("logged in to "+users.get(0));
     }
 

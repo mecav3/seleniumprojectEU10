@@ -10,7 +10,7 @@ import selen_test.JS;
 
 import java.util.*;
 
-public class RootCreateAdminToAdminless extends Account {
+public class RootCreateAdminToAdminless extends AccountBase {
     Map<String, String> companies, admins;
     Map<String, List<String>> all;
 

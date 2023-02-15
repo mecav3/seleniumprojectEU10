@@ -13,6 +13,17 @@ public class JS {
         ((JavascriptExecutor) drv).executeScript("alert('" + tagname + " '+ document.getElementsByTagName('" + tagname + "').length)");
     }
 
+    public static void alertt(WebDriver drv, String text) {
+        ((JavascriptExecutor) drv).executeScript("alert('" + text + "')");
+    }
+
+    public static void confirmm(WebDriver drv, String text) {
+        ((JavascriptExecutor) drv).executeScript("confirm('" + text + "')");
+    }
+    public static void writee(WebDriver drv, String text) {
+        ((JavascriptExecutor) drv).executeScript("document.writeln('" + text + "')");
+    }
+
     public static void js_inject(WebDriver wd, WebElement we, String text) {
         String js = "arguments[0].setAttribute('value','" + text + "')";
         ((JavascriptExecutor) wd).executeScript(js, we);

@@ -11,13 +11,12 @@ import selen_test.JS;
 import java.util.List;
 import java.util.Random;
 
-public class RootCreateCompany extends Account {
+public class RootCreateCompany extends AccountBase {
 
     @Test
     public void test1_login() {
         login(users.get(0)); // TODO dependency here for root
         Assert.assertTrue(loginIsSucces());
-        pl("my summary :");
         pl("logged in to " + users.get(0));
     }
 

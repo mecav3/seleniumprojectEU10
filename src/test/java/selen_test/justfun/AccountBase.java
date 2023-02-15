@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Account extends ToBeExtend {
+public class AccountBase extends ToBeExtend {
     String url = "http://3.94.57.183:8001/";
     String pass = "Abc1";
 

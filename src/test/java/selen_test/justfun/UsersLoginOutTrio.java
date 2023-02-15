@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
-public class UsersLoginOutTrio extends Account {
+public class UsersLoginOutTrio extends AccountBase {
 
     @Test
     public void test1() {

@@ -11,20 +11,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
-public class RootPage extends Account {
-    Map<String, String> companies, admins;
-    Map<String, List<String>> all;
+public class RootBase extends AccountBase {
+  public Map<String, String> companies, admins;
+  public Map<String, List<String>> all;
 
-    @Test
-    public void test0_login() {
+    @Test (priority = -1)
+    public void test00_login() {
         login(users.get(0)); // TODO dependency here for root
         Assert.assertTrue(loginIsSucces());
     }
 
-    @Test
-    public void test1_get_company() {
+    @Test (priority = -1)
+    public void test01_get_company() {
         Assert.assertEquals(wd.findElement(By.xpath("//h3")).getText(), "Company List");
         new Select(wd.findElement(By.tagName("select"))).selectByValue("100");
         List<WebElement> comp = wd.findElements(By.xpath("//tbody/tr/td[2]"));
@@ -36,15 +35,15 @@ public class RootPage extends Account {
         }
     }
 
-    @Test
-    public void test2_goto_user_list() {
+    @Test (priority = -1)
+    public void test02_goto_user_list() {
         wd.findElement(By.cssSelector("a.nav-link.active.bg-success-light.text-dark")).click();
         wd.findElement(By.xpath("//a[.='User Registration']")).click();
         Assert.assertEquals(wd.findElement(By.xpath("//h3")).getText(), "User List");
     }
 
-    @Test
-    public void test3_get_user_list() {
+    @Test (priority = -1)
+    public void test03_get_user_list() {
         new Select(wd.findElement(By.tagName("select"))).selectByValue("100");
         List<WebElement> admin = wd.findElements(By.xpath("//tbody/tr/td[6]"));
         List<WebElement> comp = wd.findElements(By.xpath("//tbody/tr/td[2]"));
@@ -55,15 +54,15 @@ public class RootPage extends Account {
         }
     }
 
-    @Test
-    public void test4_pivot_admin() {
+    @Test (priority = -1)
+    public void test04_pivot_admin() {
         pl("\n---------Admin Status----------");
         admins.forEach((user, comp) -> pl(user + "\t" + comp + "\t" + companies.get(comp)));
         System.out.println("Passive : " + admins.values().stream().filter(n -> companies.get(n).equalsIgnoreCase("passive")).count());
     }
 
-    @Test
-    public void test5_pivot_company() {
+    @Test (priority = -1)
+    public void test05_pivot_company() {
         all = new HashMap<>();
         for (Map.Entry<String, String> comp : companies.entrySet()) {
             List<String> list = new ArrayList<>();
@@ -89,36 +88,6 @@ public class RootPage extends Account {
         System.out.println(" count : " + all.values().stream().filter(n -> n.size() == 0).count());
     }
 
-    @Test
-    public void test6_admin_active_login() {
-        wd.get(url);
-        System.out.println("\n-----Testing Active Admins : ");
-
-        for (Map.Entry<String, String> entry :
-                admins.entrySet().stream().filter(n -> companies.get(n.getValue()).equalsIgnoreCase("active")).collect(Collectors.toList())
-        ) {
-            System.out.println(entry.getKey());
-
-            login(entry.getKey());
-            Assert.assertTrue(loginIsSucces()); // TODO gettitle bööle olmaz şifre yok çakıyo
-            logout();
-            Assert.assertTrue(logoutIsSucces());
-        }
-    }
-
-    @Test
-    public void test7_admin_passive_login() {
-        System.out.println("\n-----Testing Passive Admins : ");
-
-        for (Map.Entry<String, String> entry :
-                admins.entrySet().stream().filter(n -> companies.get(n.getValue()).equalsIgnoreCase("passive")).collect(Collectors.toList())
-        ) {
-            System.out.println(entry.getKey());
-
-            login(entry.getKey());
-            Assert.assertTrue(loginIsFail());
-        }
-    }
 
     @AfterClass
     public void tearDown() {

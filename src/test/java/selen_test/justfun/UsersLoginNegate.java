@@ -3,7 +3,7 @@ package selen_test.justfun;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class UsersLoginNegate extends Account {
+public class UsersLoginNegate extends AccountBase {
 
     @Test
     public void test_username() {

@@ -7,17 +7,18 @@ import org.testng.annotations.BeforeTest;
 public class ToBeExtend {
 
     protected WebDriver wd;
+    protected String report = "";
 
-    public static void pl(String s) {
-        System.out.println(s);
-
+    public void pl(String s) {
+        System.out.println( s);
+        report +=  s;
     }
 
-    public static void p(String s) {
+    public void p(String s) {
         System.out.print(s);
     }
 
-    public static void pl(boolean b) {
+    public void pl(boolean b) {
         System.out.println(b);
     }
 
@@ -44,6 +45,6 @@ public class ToBeExtend {
 
     @AfterTest
     public void tearDown() {
-        SelenUtil.kill_driver_process();
+        //  SelenUtil.kill_driver_process();
     }
 }
