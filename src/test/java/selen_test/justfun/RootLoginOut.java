@@ -7,14 +7,14 @@ import org.testng.annotations.Test;
 public class RootLoginOut extends AccountBase {
 
     @Test
-    public void test1_login() {
+    public void test01_login() {
         login(users.get(0)); // TODO dependency here for root
         Assert.assertTrue(loginIsSucces());
         pl("logged in to "+users.get(0));
     }
 
     @Test
-    public void test2_logout() {
+    public void test02_logout() {
         logout();
         Assert.assertTrue(logoutIsSucces());
         pl("logged out from " + users.get(0));

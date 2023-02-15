@@ -14,14 +14,14 @@ import java.util.Random;
 public class RootCreateCompany extends AccountBase {
 
     @Test
-    public void test1_login() {
+    public void test01_login() {
         login(users.get(0)); // TODO dependency here for root
         Assert.assertTrue(loginIsSucces());
         pl("logged in to " + users.get(0));
     }
 
     @Test
-    public void test2_create_company() {
+    public void test02_create_company() {
 
         int i = 0;
         while (i++ < 1) {

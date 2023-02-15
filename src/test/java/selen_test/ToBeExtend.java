@@ -1,7 +1,6 @@
 package selen_test;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
 public class ToBeExtend {
@@ -43,8 +42,4 @@ public class ToBeExtend {
         wd.manage().deleteAllCookies();
     }
 
-    @AfterTest
-    public void tearDown() {
-        //  SelenUtil.kill_driver_process();
-    }
 }

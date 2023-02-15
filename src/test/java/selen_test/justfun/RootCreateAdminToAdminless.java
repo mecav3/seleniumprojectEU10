@@ -15,7 +15,7 @@ public class RootCreateAdminToAdminless extends AccountBase {
     Map<String, List<String>> all;
 
     @Test
-    public void test0_login_get_companies() {
+    public void test00_login_get_companies() {
         login(users.get(0)); // TODO dependency here for root
         Assert.assertTrue(loginIsSucces());
         Assert.assertEquals(wd.findElement(By.xpath("//h3")).getText(), "Company List");
@@ -30,7 +30,7 @@ public class RootCreateAdminToAdminless extends AccountBase {
     }
 
     @Test
-    public void test1_go_get_user_list() {
+    public void test01_go_get_user_list() {
         wd.findElement(By.cssSelector("a.nav-link.active.bg-success-light.text-dark")).click();
         wd.findElement(By.xpath("//a[.='User Registration']")).click();
         Assert.assertEquals(wd.findElement(By.xpath("//h3")).getText(), "User List");
@@ -46,7 +46,7 @@ public class RootCreateAdminToAdminless extends AccountBase {
     }
 
     @Test
-    public void test2_pivot_company() {
+    public void test02_pivot_company() {
         all = new HashMap<>();
         for (Map.Entry<String, String> comp : companies.entrySet()) {
             List<String> list = new ArrayList<>();
@@ -61,7 +61,7 @@ public class RootCreateAdminToAdminless extends AccountBase {
     }
 
     @Test
-    public void test3() {
+    public void test03() {
         pl("\n---------Companies with NO admin----------");
         all.forEach((company, admin) -> {
             if (admin.size() == 0) {
@@ -92,7 +92,6 @@ public class RootCreateAdminToAdminless extends AccountBase {
         Assert.assertEquals(wd.findElement(By.xpath("//h3")).getText(), "User List");
         pl("adding user to " + company);
     }
-
 
     @AfterClass
     public void tearDown() {

@@ -3,6 +3,7 @@ package selen_test.justfun;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
 public class UsersLoginOutTrio extends AccountBase {
@@ -12,7 +13,7 @@ public class UsersLoginOutTrio extends AccountBase {
         int i = 0;
         wd.get(url);
         while (i++ < 1) {
-            System.out.println(users.get(0) + "-" + i);
+            pl(users.get(0) + "-" + i);
             login(wd, users.get(0));
             logout(wd);
         }
@@ -25,10 +26,11 @@ public class UsersLoginOutTrio extends AccountBase {
         wd2.manage().window().setPosition(new Point(200, 200));
         wd2.get(url);
         while (i++ < 1) {
-            System.out.println(users.get(2) + "-" + i);
+            pl(users.get(2) + "-" + i);
             login(wd2, users.get(2));
             logout(wd2);
         }
+        wd2.quit();
     }
 
     @Test
@@ -39,10 +41,15 @@ public class UsersLoginOutTrio extends AccountBase {
         wd1.get(url);
 
         while (i++ < 1) {
-            System.out.println(users.get(1) + "-" + i);
+            pl(users.get(1) + "-" + i);
             login(wd1, users.get(1));
             logout(wd1);
         }
+        wd1.quit();
     }
 
+    @AfterClass
+    public void afterClass() {
+        wd.quit();
+    }
 }

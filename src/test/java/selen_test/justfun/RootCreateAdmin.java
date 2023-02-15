@@ -14,22 +14,21 @@ import java.util.Random;
 public class RootCreateAdmin extends AccountBase {
 
     @Test
-    public void test1_login() {
+    public void test01_login() {
         login(users.get(0)); // TODO dependency here for root
         Assert.assertTrue(loginIsSucces());
         pl("logged in to " + users.get(0));
     }
 
     @Test
-    public void test2_goto_user_list() {
+    public void test02_goto_user_list() {
         wd.findElement(By.cssSelector("a.nav-link.active.bg-success-light.text-dark")).click();
         wd.findElement(By.xpath("//a[.='User Registration']")).click();
         Assert.assertEquals(wd.findElement(By.xpath("//h3")).getText(), "User List");
     }
 
     @Test
-    public void test3_create_user() {
-
+    public void test03_create_user() {
         int i = 0;
         while (i++ < 1) {
 
@@ -51,13 +50,12 @@ public class RootCreateAdmin extends AccountBase {
             wd.findElement(By.cssSelector("button[value='save']")).click();
             Assert.assertEquals(wd.findElement(By.xpath("//h3")).getText(), "User List");
             pl("adding user " + i);
-
         }
     }
 
     @AfterClass
     public void tearDown() {
-       wd.quit();
-       //  SelenUtil.kill_driver_process();
+//       wd.quit();
+//         SelenUtil.kill_driver_process();
     }
 }

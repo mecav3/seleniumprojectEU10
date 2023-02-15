@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
@@ -88,10 +87,9 @@ public class RootBase extends AccountBase {
         System.out.println(" count : " + all.values().stream().filter(n -> n.size() == 0).count());
     }
 
-
-    @AfterClass
-    public void tearDown() {
+   // @AfterClass
+   // public void tearDown() {
         // wd.quit();
         //   SelenUtil.kill_driver_process();
-    }
+  //  }
 }

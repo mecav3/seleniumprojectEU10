@@ -10,7 +10,7 @@ public class UsersLoginNegate extends AccountBase {
         int i = 0;
 
         while (i++ < 1) {
-            System.out.println(
+            pl(
                     fakeit(users.get(0))
                             + "-" + i);
             login(
@@ -26,7 +26,7 @@ public class UsersLoginNegate extends AccountBase {
         int i = 0;
 
         while (i++ < 1) {
-            System.out.println(users.get(0) + " : " +
+            pl(users.get(0) + " : " +
                     fakeit(pass)
                     + "-" + i);
             login(users.get(0), fakeit(pass));
@@ -34,6 +34,5 @@ public class UsersLoginNegate extends AccountBase {
             Assert.assertTrue(loginIsFail());
         }
     }
-
 
 }
