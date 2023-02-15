@@ -20,7 +20,7 @@ public class AdminCreateProduct extends RootBase {
 
         for (Map.Entry<String, String> entry :
                 admins.entrySet().stream().filter(n -> companies.get(n.getValue()).equalsIgnoreCase("active")).collect(Collectors.toList())) {
-            System.out.println(entry.getKey());
+            pl(entry.getKey());
 
             login(entry.getKey());
             Assert.assertTrue(loginIsSucces()); // TODO gettitle bööle olmaz şifre yok çakıyo

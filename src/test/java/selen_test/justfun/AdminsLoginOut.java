@@ -34,7 +34,7 @@ public class AdminsLoginOut extends RootBase {
         for (Map.Entry<String, String> entry :
                 admins.entrySet().stream().filter(n -> companies.get(n.getValue()).equalsIgnoreCase("passive")).collect(Collectors.toList())
         ) {
-            System.out.println(entry.getKey());
+            pl(entry.getKey());
 
             login(entry.getKey());
             Assert.assertTrue(loginIsFail());
